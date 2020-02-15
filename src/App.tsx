@@ -1,10 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux'
+
+import Home from './container/home/Home';
+import configureStore from './redux/store/store'
+
+const store = configureStore();
 
 const App = () => {
   return (
-    <div>Marjan</div>
+    <Provider store={store}>
+      <Home />
+    </Provider>
   );
 }
 
