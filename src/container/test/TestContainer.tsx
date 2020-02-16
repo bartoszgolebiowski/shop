@@ -24,12 +24,15 @@ type RateProps = {
     }
 }
 
-export const Home = (props: HomeProps) => {
+export const Test = (props: HomeProps) => {
     const { loading, error, data } = useQuery(GET_RATES);
+    const rateProps: RateProps = {
+        loading, error, data
+    }
 
     return (
         <div>
-            <Rates loading={loading} error={error} data={data} />
+            <Rates {...rateProps} />
             <Counter {...props} />
         </div>
     );
@@ -53,4 +56,4 @@ const stateToProps = (state: any) => ({
     value: state.counterReducer.value
 });
 
-export default connect(stateToProps, actionToProps)(Home)
+export default connect(stateToProps, actionToProps)(Test)
