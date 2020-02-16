@@ -1,0 +1,1 @@
+export const GRAPHQL_SERVER_URL: String = 'https://48p1r2roz4.sse.codesandbox.io'
