@@ -1,7 +1,7 @@
 import { fork, takeEvery } from 'redux-saga/effects';
 
 import { INCREMENT_ASYNC, DECREMENT_ASYNC } from '../../actions/counter/actionTypes'
-import { incrementAsync, decrementAsync, watchIncrementAsync, watchDecrementAsync } from './counterSagas'
+import { incrementAsync, decrementAsync, watchIncrementAsync, watchDecrementAsync } from './sagas'
 
 describe('Check if counter generators works', () => {
     it('Handle increment', () => {
