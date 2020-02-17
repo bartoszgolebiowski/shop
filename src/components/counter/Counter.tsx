@@ -1,6 +1,6 @@
 import React from 'react'
 
-type CounterProps = {
+export type CounterProps = {
     value: Number,
     onIncrement: Function,
     onDecrement: Function
@@ -9,15 +9,15 @@ type CounterProps = {
 export const Counter = ({ value, onIncrement, onDecrement }: CounterProps) => {
     return (
         <div>
-            <button onClick={() => onIncrement()}>
+            <button id='increment' onClick={() => onIncrement()}>
                 Increment
             </button>
             {' '}
-            <button onClick={() => onDecrement()}>
+            <button id='decrement' onClick={() => onDecrement()}>
                 Decrement
             </button>
             <hr />
-            <div>
+            <div id='counter_value'>
                 Clicked: {value} times
             </div>
         </div>
