@@ -9,15 +9,15 @@ export type CounterProps = {
 export const Counter = ({ value, onIncrement, onDecrement }: CounterProps) => {
     return (
         <div>
-            <button id='increment' onClick={() => onIncrement()}>
+            <button onClick={() => onIncrement()}>
                 Increment
             </button>
             {' '}
-            <button id='decrement' onClick={() => onDecrement()}>
+            <button onClick={() => onDecrement()}>
                 Decrement
             </button>
             <hr />
-            <div id='counter_value'>
+            <div>
                 Clicked: {value} times
             </div>
         </div>

@@ -1,4 +1,4 @@
-export const INCREMENT: String = 'INCREMENT'
-export const DECREMENT: String = 'DECREMENT'
-export const INCREMENT_ASYNC: String = 'INCREMENT_ASYNC'
-export const DECREMENT_ASYNC: String = 'DECREMENT_ASYNC'
+export const INCREMENT: string = 'INCREMENT'
+export const DECREMENT: string = 'DECREMENT'
+export const INCREMENT_ASYNC: string = 'INCREMENT_ASYNC'
+export const DECREMENT_ASYNC: string = 'DECREMENT_ASYNC'

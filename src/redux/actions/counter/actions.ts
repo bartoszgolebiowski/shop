@@ -1,6 +1,6 @@
 import { INCREMENT_ASYNC, DECREMENT_ASYNC } from './actionTypes'
 
-const action = (type: String, payload: any = {}) => {
+const action = (type: string, payload: any = {}) => {
     return { type, ...payload }
 }
 

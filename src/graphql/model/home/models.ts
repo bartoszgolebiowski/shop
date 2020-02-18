@@ -1,4 +1,4 @@
 export type Rate = {
-    currency: String,
-    __typename: String,
+    currency: string,
+    __typename: string,
 }
