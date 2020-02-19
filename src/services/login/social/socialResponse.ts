@@ -9,14 +9,15 @@ interface AuthResponse {
 }
 
 export type SocialResponse = {
+  name?: string
+  email?: string
+  pictureUrl?: string
+  accessToken?: string
   status: string
 }
 
+
 export interface SocialMediaResponseSuccess extends SocialResponse {
-  name: string,
-  email: string,
-  pictureUrl: string,
-  accessToken: string,
   tokenObj?: AuthResponse,
   tokenId?: string,
 }

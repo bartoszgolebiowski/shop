@@ -1,19 +1,26 @@
-import { ReactFacebookLoginInfo } from "react-facebook-login"
-import { SocialResponse, SocialMediaResponseSuccess, SocialMediaResponseFailed } from "./socialResponse"
+import { ReactFacebookLoginInfo, ReactFacebookFailureResponse } from "react-facebook-login"
+import { SocialResponse, SocialMediaResponseFailed } from "./socialResponse"
 
 export interface FacebookLogin {
-    callback(res: ReactFacebookLoginInfo): SocialMediaResponseSuccess | SocialMediaResponseFailed,
+    callback(response: ReactFacebookLoginInfo): SocialResponse,
+    onFailure(response: ReactFacebookFailureResponse): SocialMediaResponseFailed,
 }
 
 export const facebookLogin: FacebookLogin = {
-    callback: (res: ReactFacebookLoginInfo) => {
-        return instanceOfA(res) ?
-            onSuccess(res) :
-            onFailed(res)
+    callback: (response: ReactFacebookLoginInfo) => {
+        return instanceOfA(response) ?
+            onSuccess(response) :
+            onFailed(response)
     },
+    onFailure: (response: ReactFacebookFailureResponse): SocialMediaResponseFailed => {
+        return {
+            errors: { ...response },
+            status: 'failed'
+        }
+    }
 }
 
-const onSuccess = (response: ReactFacebookLoginInfo): SocialMediaResponseSuccess => {
+const onSuccess = (response: ReactFacebookLoginInfo): SocialResponse => {
     return {
         name: response.name || '',
         email: response.email || '',
@@ -23,9 +30,9 @@ const onSuccess = (response: ReactFacebookLoginInfo): SocialMediaResponseSuccess
     }
 }
 
-const onFailed = (res: any): SocialMediaResponseFailed => {
+const onFailed = (response: any): SocialMediaResponseFailed => {
     return {
-        errors: res,
+        errors: response,
         status: 'failed'
     }
 }

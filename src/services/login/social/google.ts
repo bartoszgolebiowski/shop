@@ -1,20 +1,20 @@
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
-import { SocialMediaResponseFailed, SocialMediaResponseSuccess } from "./socialResponse";
+import { SocialMediaResponseFailed, SocialMediaResponseSuccess, SocialResponse } from "./socialResponse";
 
 export interface GoogleLogin {
-    onSuccess(response: GoogleLoginResponse | GoogleLoginResponseOffline): SocialMediaResponseSuccess | SocialMediaResponseFailed,
+    onSuccess(response: GoogleLoginResponse | GoogleLoginResponseOffline): SocialResponse,
     onFailure(response: any): SocialMediaResponseFailed
 }
 
 export const googleLogin: GoogleLogin = {
-    onSuccess: (response: GoogleLoginResponse | GoogleLoginResponseOffline): SocialMediaResponseSuccess | SocialMediaResponseFailed => {
+    onSuccess: (response: GoogleLoginResponse | GoogleLoginResponseOffline): SocialResponse => {
         return (instanceOfA(response)) ?
-            onSuccessOnline(<GoogleLoginResponse>response) :
-            onSuccessOffline(<GoogleLoginResponseOffline>response);
+            onSuccessOnline(response as GoogleLoginResponse) :
+            onSuccessOffline(response as GoogleLoginResponseOffline);
     },
     onFailure: (response: any): SocialMediaResponseFailed => {
         return {
-            errors: response,
+             ...response,
             status: 'failed'
         }
     }

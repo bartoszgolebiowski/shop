@@ -1,0 +1,7 @@
+export const GET_SERVER_TOKEN_VIA_GOOGLE: string = 'GET_SERVER_TOKEN_VIA_GOOGLE'
+export const GET_SERVER_TOKEN_VIA_FACEBOOK: string = 'GET_SERVER_TOKEN_VIA_FACEBOOK'
+export const SAVE_TOKEN_SOCIAL: string = 'SAVE_TOKEN_SOCIAL'
+export const SAVE_TOKEN_SERVER: string = 'SAVE_TOKEN_SERVER'
+export const SAVE_USER_DETAIL_SOCIAL: string = 'SAVE_USER_DETAIL_SOCIAL'
+export const LOG_OUT: string = 'LOG_OUT'
+export const LOG_IN: string = 'LOG_IN'
