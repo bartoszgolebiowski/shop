@@ -1,9 +1,9 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const GET_RATES = gql`
-{
-  rates(currency: "USD") {
-    currency
+  {
+    rates(currency: "USD") {
+      currency
+    }
   }
-}
-`
+`;

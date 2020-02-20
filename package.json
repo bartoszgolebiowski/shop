@@ -29,6 +29,7 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
+    "pretty": "prettier --write \"./**/*.{js,jsx,json,ts,tsx}\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
