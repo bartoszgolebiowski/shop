@@ -23,39 +23,31 @@ export const googleLogin: GoogleLogin = {
       ? onSuccessOnline(response as GoogleLoginResponse)
       : onSuccessOffline(response as GoogleLoginResponseOffline);
   },
-  onFailure: (response: any): SocialMediaResponseFailed => {
-    return {
-      ...response,
-      status: "failed"
-    };
-  }
+  onFailure: (response: any): SocialMediaResponseFailed => ({
+    ...response,
+    status: "failed"
+  })
 };
 
 const onSuccessOnline = (
   response: GoogleLoginResponse
-): SocialMediaResponseSuccess => {
-  return {
-    name: response.getBasicProfile().getName(),
-    email: response.getBasicProfile().getEmail(),
-    pictureUrl: response.getBasicProfile().getImageUrl(),
-    accessToken: response.accessToken,
-    tokenObj: response.tokenObj,
-    tokenId: response.tokenId,
-    status: "success"
-  };
-};
+): SocialMediaResponseSuccess => ({
+  name: response.getBasicProfile().getName(),
+  email: response.getBasicProfile().getEmail(),
+  pictureUrl: response.getBasicProfile().getImageUrl(),
+  accessToken: response.accessToken,
+  tokenObj: response.tokenObj,
+  tokenId: response.tokenId,
+  status: "success"
+});
 
 const onSuccessOffline = (
   response: GoogleLoginResponseOffline
-): SocialMediaResponseFailed => {
-  return {
-    errors: response,
-    status: "failed"
-  };
-};
+): SocialMediaResponseFailed => ({
+  errors: response,
+  status: "failed"
+});
 
 const instanceOfA = (
   response: GoogleLoginResponse | GoogleLoginResponseOffline
-): boolean => {
-  return !response.hasOwnProperty("code");
-};
+): boolean => !response.hasOwnProperty("code");

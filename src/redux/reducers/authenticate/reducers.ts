@@ -8,16 +8,17 @@ import {
   AuthenticateAction
 } from "../../actions/authenticate/actionTypes";
 
-const initalState: AuthenticateState = {
+export const initialStateAuth: AuthenticateState = {
   loggedIn: false,
   name: "",
   email: "",
+  pictureUrl: "",
   accessTokenSocial: "",
   accessTokenServer: ""
 };
 
 export default function authenticateReducer(
-  state: AuthenticateState = initalState,
+  state: AuthenticateState = initialStateAuth,
   action: AuthenticateAction
 ): AuthenticateState {
   switch (action.type) {
@@ -28,7 +29,7 @@ export default function authenticateReducer(
       };
     case LOG_OUT:
       return {
-        ...initalState
+        ...initialStateAuth
       };
     case SAVE_TOKEN_SERVER:
       return {
@@ -44,7 +45,8 @@ export default function authenticateReducer(
       return {
         ...state,
         name: action.payload.name,
-        email: action.payload.email
+        email: action.payload.email,
+        pictureUrl: action.payload.pictureUrl
       };
     default:
       return state;

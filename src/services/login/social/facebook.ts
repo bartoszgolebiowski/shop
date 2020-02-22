@@ -15,31 +15,24 @@ export const facebookLogin: FacebookLogin = {
   },
   onFailure: (
     response: ReactFacebookFailureResponse
-  ): SocialMediaResponseFailed => {
-    return {
-      errors: { ...response },
-      status: "failed"
-    };
-  }
-};
-
-const onSuccess = (response: ReactFacebookLoginInfo): SocialResponse => {
-  return {
-    name: response.name || "",
-    email: response.email || "",
-    pictureUrl: response.picture?.data.url || "",
-    accessToken: response.accessToken,
-    status: "success"
-  };
-};
-
-const onFailed = (response: any): SocialMediaResponseFailed => {
-  return {
-    errors: response,
+  ): SocialMediaResponseFailed => ({
+    errors: { ...response },
     status: "failed"
-  };
+  })
 };
 
-const instanceOfA = (response: ReactFacebookLoginInfo): boolean => {
-  return !response.hasOwnProperty("status");
-};
+const onSuccess = (response: ReactFacebookLoginInfo): SocialResponse => ({
+  name: response.name || "",
+  email: response.email || "",
+  pictureUrl: response.picture?.data.url || "",
+  accessToken: response.accessToken,
+  status: "success"
+});
+
+const onFailed = (response: any): SocialMediaResponseFailed => ({
+  errors: response,
+  status: "failed"
+});
+
+const instanceOfA = (response: ReactFacebookLoginInfo): boolean =>
+  !response.hasOwnProperty("status");

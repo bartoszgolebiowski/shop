@@ -34,8 +34,8 @@ const statusCode = (
 const getServerToken = (
   token: string,
   grant_type: string
-): Promise<LoginServerReponse> => {
-  return fetch(`${SERVER_URL}${CONNECT_TOKEN}`, {
+): Promise<LoginServerReponse> =>
+  fetch(`${SERVER_URL}${CONNECT_TOKEN}`, {
     method: "POST",
     body: qs.stringify({ token, grant_type }),
     mode: "cors",
@@ -44,4 +44,3 @@ const getServerToken = (
     .then(response => response.json())
     .then(response => statusCode(200, response))
     .catch(err => statusCode(500, err));
-};

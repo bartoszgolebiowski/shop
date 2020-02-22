@@ -59,6 +59,7 @@ type RateProps = {
 };
 
 export const Test = (props: HomeProps) => {
+  console.log(props);
   const { loading, error, data } = useQuery(GET_RATES);
   const rateProps: RateProps = {
     loading,

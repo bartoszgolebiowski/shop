@@ -32,15 +32,14 @@ type ActionLogin = {
 
 export type AuthenticateSaga = {
   type: string;
-  payload: {
-    type: string;
-    payload: SocialResponse;
-  };
+  payload: SocialResponse;
 };
+
 export type AuthenticateState = {
   loggedIn: boolean;
   name: string;
   email: string;
+  pictureUrl: string;
   accessTokenSocial: string;
   accessTokenServer: string;
 };

@@ -5,12 +5,12 @@ type CounterState = {
   value: number;
 };
 
-const initalState = {
+export const initalStateCounter: CounterState = {
   value: 0
 };
 
 export default function counterReducer(
-  state: CounterState = initalState,
+  state: CounterState = initalStateCounter,
   action: Action
 ): CounterState {
   switch (action.type) {

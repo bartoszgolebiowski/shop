@@ -5,6 +5,7 @@ import {
   SAVE_TOKEN_SOCIAL,
   SAVE_TOKEN_SERVER,
   LOG_OUT,
+  LOG_IN,
   SocialTokenAction,
   ServerTokenAction,
   AuthenticateAction,
@@ -25,12 +26,15 @@ const serverToken = (accessTokenServer: string): ServerTokenAction => ({
   accessTokenServer
 });
 
-export const connectTokenGoogle = (response: SocialResponse) =>
-  action(GET_SERVER_TOKEN_VIA_GOOGLE, response);
-export const connectTokenFacebook = (response: SocialResponse) =>
-  action(GET_SERVER_TOKEN_VIA_FACEBOOK, response);
-export const saveSocialToken = (token: string) =>
+export const connectTokenGoogle = (
+  response: SocialResponse
+): AuthenticateAction => action(GET_SERVER_TOKEN_VIA_GOOGLE, response);
+export const connectTokenFacebook = (
+  response: SocialResponse
+): AuthenticateAction => action(GET_SERVER_TOKEN_VIA_FACEBOOK, response);
+export const saveSocialToken = (token: string): AuthenticateAction =>
   action(SAVE_TOKEN_SOCIAL, socialToken(token));
-export const saveServerToken = (token: string) =>
+export const saveServerToken = (token: string): AuthenticateAction =>
   action(SAVE_TOKEN_SERVER, serverToken(token));
-export const logOut = () => action(LOG_OUT);
+export const logOut = (): AuthenticateAction => action(LOG_OUT);
+export const logIn = (): AuthenticateAction => action(LOG_IN);
