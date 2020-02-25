@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import React, { Dispatch, useEffect } from "react";
 import { Action } from "redux";
 import { connect } from "react-redux";
 import { useQuery } from "@apollo/react-hooks";
@@ -11,12 +11,6 @@ import GoogleLogin, {
   GoogleLoginResponse,
   GoogleLoginResponseOffline
 } from "react-google-login";
-
-import Counter from "../../components/counter/Counter";
-import {
-  incrementAsync,
-  decrementAsync
-} from "../../redux/actions/counter/actions";
 import {
   connectTokenGoogle,
   saveSocialToken,
@@ -42,8 +36,6 @@ import { RootState } from "../../redux/reducers/rootReducer";
 type HomeProps = {
   value: number;
   auth: AuthenticateState;
-  onIncrement: Function;
-  onDecrement: Function;
   clearUserDetails: Function;
   connectTokenGoogle: Function;
   connectTokenFacebook: Function;
@@ -58,8 +50,7 @@ type RateProps = {
   };
 };
 
-export const Test = (props: HomeProps) => {
-  console.log(props);
+export const Dashboard = (props: HomeProps) => {
   const { loading, error, data } = useQuery(GET_RATES);
   const rateProps: RateProps = {
     loading,
@@ -70,7 +61,6 @@ export const Test = (props: HomeProps) => {
   return (
     <div>
       <Rates {...rateProps} />
-      <Counter {...props} />
       <FacebookLogin
         appId={APP_ID_FACEBOOK}
         fields="name,email,picture"
@@ -123,8 +113,6 @@ const Rates = ({ loading, error, data }: RateProps) => {
 };
 
 const actionToProps = (dispatch: Dispatch<Action>) => ({
-  onIncrement: () => dispatch(incrementAsync()),
-  onDecrement: () => dispatch(decrementAsync()),
   clearUserDetails: () => dispatch(logOut()),
   saveSocialToken: (token: string) => dispatch(saveSocialToken(token)),
   connectTokenGoogle: (response: SocialMediaResponseSuccess) =>
@@ -182,4 +170,4 @@ const isStatusCodeSuccess = (response: SocialMediaResponse): boolean => {
   return response.status === "success";
 };
 
-export default connect(stateToProps, actionToProps)(Test);
+export default connect(stateToProps, actionToProps)(Dashboard);

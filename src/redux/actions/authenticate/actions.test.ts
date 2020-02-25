@@ -32,6 +32,7 @@ describe("Authenticate actions", () => {
     );
     expect(connectTokenGoogle(input)).toEqual(expected);
   });
+
   it("GET_SERVER_TOKEN_VIA_FACEBOOK", () => {
     const input: SocialResponse = {
       name: "name",
@@ -46,6 +47,7 @@ describe("Authenticate actions", () => {
     );
     expect(connectTokenFacebook(input)).toEqual(expected);
   });
+
   it("SAVE_TOKEN_SOCIAL", () => {
     const input: string = "accessTokenSocial";
     const expected: AuthenticateAction = expectedAction(SAVE_TOKEN_SOCIAL, {
@@ -53,6 +55,7 @@ describe("Authenticate actions", () => {
     });
     expect(saveSocialToken(input)).toEqual(expected);
   });
+
   it("SAVE_TOKEN_SERVER", () => {
     const input: string = "accessTokenServer";
     const expected: AuthenticateAction = expectedAction(SAVE_TOKEN_SERVER, {

@@ -1,8 +1,7 @@
 import { put, takeEvery, call, select } from "redux-saga/effects";
 import {
   ServerTokenAction,
-  AuthenticateSaga,
-  SAVE_TOKEN_SOCIAL
+  AuthenticateSaga
 } from "../../actions/authenticate/actionTypes";
 import {
   serverLogin,
