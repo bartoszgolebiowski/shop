@@ -2,6 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { ApolloProvider } from "react-apollo";
 import { BrowserRouter } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 import configureStore from "./redux/store/store";
 import configureClient from "./graphql/client/configureClient";
@@ -15,6 +16,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <Provider store={store}>
         <BrowserRouter>
+          <CssBaseline />
           <Router />
         </BrowserRouter>
       </Provider>

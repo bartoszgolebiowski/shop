@@ -52,9 +52,10 @@ function* connectToken(
           socialData
         )
       );
+
       yield put(logIn());
     } else {
-      throw "Login via social media has failed";
+      throw new Error("Login via social media has failed")
     }
   } catch {
     yield put(logOut());
