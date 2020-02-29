@@ -1,4 +1,4 @@
-import React, { Dispatch, useState } from 'react';
+import React, { Dispatch, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -89,12 +89,16 @@ export const Login = (props: LoginProps) => {
     const [errors, setErrors] = useState(false);
     const classes = useStyles();
 
+    useEffect(() => {
+        window.open("http://192.168.1.115.xip.io:5000/Api/Authorization/ExternalLogin/Google")
+    }, [])
+    
     const socialProps = {
         setErrors,
         clearUserDetails: props.clearUserDetails,
         saveSocialToken: props.saveSocialToken
     }
-    
+
     return (
         <div className={classes.root}>
             <div className={classes.container}>
@@ -108,14 +112,14 @@ export const Login = (props: LoginProps) => {
                             {...socialProps}
                             googleCallback={googleCallback}
                             className={classes.google}
-                            connectTokenGoogle={props.connectTokenGoogle} />
+                            connectTokenGoogle={props.connectTokenGoogle} /> 
                         <FacebookSocial
                             {...socialProps}
                             facebookCallback={facebookCallback}
                             className={classes.facebook}
-                            connectTokenFacebook={props.connectTokenFacebook} />
+                            connectTokenFacebook={props.connectTokenFacebook} /> 
                         <div className={classes.footer}>
-                            {errors && <span>errors</span>}
+                            {!!!errors && <span>errors</span>}
                         </div>
                     </Paper>
                 </div>
